@@ -12,3 +12,4 @@
 /Users/adolfmathebula/Documents/Dev Projects/FamTrack/obj/Debug/net9.0/FamTrack.pdb
 /Users/adolfmathebula/Documents/Dev Projects/FamTrack/obj/Debug/net9.0/FamTrack.genruntimeconfig.cache
 /Users/adolfmathebula/Documents/Dev Projects/FamTrack/obj/Debug/net9.0/ref/FamTrack.dll
+/Users/adolfmathebula/Documents/Dev Projects/FamTrack/obj/Debug/net9.0/FamTrack.sourcelink.json
