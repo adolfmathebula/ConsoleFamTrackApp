@@ -10,13 +10,14 @@ namespace FamTrack {
             Console.Clear();
             Actions actions = new Actions();
             List<Person> persons = new List<Person>();
-
-            Console.WriteLine("Hi, welcome to the family register.");
+            
+            actions.ShowHeading("Family Tracker");
+            Console.WriteLine("\nHi, welcome to Family Tracker.");
             string userName;
 
             do
             {
-                Console.Write("Please register/enter your name: ");
+                Console.Write("Please enter your name:\n");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 userName = Console.ReadLine() ?? string.Empty;;
                 Console.ResetColor();
@@ -31,7 +32,8 @@ namespace FamTrack {
 
 
             Console.Clear();
-            Console.WriteLine($"Hi, {userName}, ready to register a family member? (Y/N)");
+            Console.WriteLine($"Hi, {userName}, ready to record a family member? (Y/N)");
+
             FamilyRegister.AskToRegister(persons, userName, actions);
         }
     }   
