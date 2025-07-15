@@ -137,7 +137,7 @@ namespace FamTrack
         }
 
 
-        //After Adding Memubers menu
+        //After Adding Members menu
         public static void AfterAddingMembersMenu(List<Person> persons, string userName, Actions actions)
         {
             Console.Clear();
