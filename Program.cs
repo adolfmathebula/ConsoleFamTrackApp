@@ -1,43 +1,48 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using FamTrack.Models;
+using FamTrack.Services;
 
-namespace FamTrack {
+
+namespace FamTrack
+{
     class Program
     {
         static void Main(string[] args)
         {
             Console.Clear();
-            Actions actions = new Actions();
-            List<Person> persons = new List<Person>();
-            
-            actions.ShowHeading("Family Tracker");
-            Console.WriteLine("\nHi, welcome to Family Tracker.");
-            string userName;
 
+            // Initialize services
+            var messenger = new ConsoleMessenger();
+            var listService = new ListFamilyMembers(messenger);
+            var persons = new List<Person>();
+
+            // Heading and greeting
+            messenger.Heading("Family Tracker");
+            Console.WriteLine("\nHi, welcome to Family Tracker.");
+
+            // Prompt for user name
+            string userName;
             do
             {
-                actions.ActionPrompt("\nPlease enter your name:");
+                messenger.Prompt("\nPlease enter your name:");
                 userName = Console.ReadLine() ?? string.Empty;
-                
+
                 if (string.IsNullOrWhiteSpace(userName))
                 {
                     Console.Clear();
-                    actions.ErrorResponse("Invalid input. Please enter a valid name.");
+                    messenger.Error("Invalid input. Please enter a valid name.");
                 }
 
             } while (string.IsNullOrWhiteSpace(userName));
 
-
             Console.Clear();
-            Console.WriteLine($"Hi, {userName}, are ready to record a family member? (Y/N)");
+            Console.WriteLine($"Hi, {userName}, are you ready to record a family member? (Y/N)");
 
-            FamilyRegister.AskToRegister(persons, userName, actions);
+            // Register family members
+            FamilyRegister.AskToRegister(persons, userName, messenger, listService);
         }
-    }   
+    }
 }
-
-
-
 
 

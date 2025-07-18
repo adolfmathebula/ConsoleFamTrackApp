@@ -1,10 +1,13 @@
-public class Person(string name, int age, string gender)
+namespace FamTrack.Models
 {
-  public string Name { get; } = name;
-  public int Age { get; } = age;
-  public string Gender { get; } = gender;
-}
+  public class Person(string name, int age, string gender)
+  {
+    public string Name { get; } = name;
+    public int Age { get; } = age;
+    public string Gender { get; } = gender;
+  }
 
+}
 
 // NOTES
 // public class Person
