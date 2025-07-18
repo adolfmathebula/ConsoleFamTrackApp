@@ -17,10 +17,8 @@ namespace FamTrack {
 
             do
             {
-                Console.Write("Please enter your name:\n");
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                userName = Console.ReadLine() ?? string.Empty;;
-                Console.ResetColor();
+                actions.ActionPrompt("\nPlease enter your name:");
+                userName = Console.ReadLine() ?? string.Empty;
                 
                 if (string.IsNullOrWhiteSpace(userName))
                 {
@@ -32,7 +30,7 @@ namespace FamTrack {
 
 
             Console.Clear();
-            Console.WriteLine($"Hi, {userName}, ready to record a family member? (Y/N)");
+            Console.WriteLine($"Hi, {userName}, are ready to record a family member? (Y/N)");
 
             FamilyRegister.AskToRegister(persons, userName, actions);
         }

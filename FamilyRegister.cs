@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Spectre.Console;
 
 namespace FamTrack
 {
@@ -18,7 +19,7 @@ namespace FamTrack
             else if (register == "n")
             {
                 Console.Clear();
-                actions.SuccessResponse($"Goodbye {userName}, thanks for visiting.");
+                actions.SuccessResponse($"Goodbye {userName}, thanks for visiting.\n\n");
             }
             else
             {
@@ -40,10 +41,9 @@ namespace FamTrack
             string memberName;
             void GetName()
             {
-                Console.WriteLine("Enter Family member name:");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                actions.ActionPrompt("Enter Family member's name:");
                 memberName = Console.ReadLine() ?? string.Empty; ;
-                Console.ResetColor();
+                
             }
 
             GetName();
@@ -57,14 +57,12 @@ namespace FamTrack
             int memberAge;
             int GetAge()
             {
-                Console.WriteLine("Enter their age:");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                actions.ActionPrompt("Enter their age:");
                 string input = Console.ReadLine() ?? string.Empty;
-                Console.ResetColor();
 
                 while (!int.TryParse(input, out memberAge))
                 {
-                    actions.ErrorResponse("Invalid input. Please enter a valid integer for your age.");
+                    actions.ErrorResponse("Invalid input. Please enter a valid integer for their age.");
                     input = Console.ReadLine() ?? string.Empty;
                 }
                 return memberAge;
@@ -76,10 +74,8 @@ namespace FamTrack
             string memberGender;
             void GetGender()
             {
-                Console.WriteLine("Enter a gender (M/F):");
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                actions.ActionPrompt("Enter a gender (M/F):");
                 memberGender = (Console.ReadLine() ?? string.Empty).Trim().ToUpper();
-                Console.ResetColor();
             }
 
             GetGender();
@@ -94,20 +90,16 @@ namespace FamTrack
             Console.Clear();
 
             actions.ShowHeading("RECORD A FAMILY MEMBER");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nFamily member added successfully!! \nHere is the list:\n");
-            Console.ResetColor();
+            actions.SuccessResponse($"\nFamily member {memberName} has been added successfully. \nHere is the list:\n");
 
              //Add line - begining of list
-            actions.SuccessResponse(new string('.', 40) + "\n");
+            actions.SuccessResponse(new string('.', 40) + "\n\n");
 
             for (int i = 0; i < persons.Count; i++)
             {
                 string gender = persons[i].Gender.ToLower() == "m" ? "Male" : "Female";
-
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"  {i + 1}. {persons[i].Name} ({gender}) -- {persons[i].Age} Years");
-                Console.ResetColor();
+                string memberLine = ($"  {i + 1}. {persons[i].Name} ({gender}) -- {persons[i].Age} Years");
+                actions.ActionPrompt(memberLine);
             }
 
             //Add line - end of list
@@ -117,7 +109,7 @@ namespace FamTrack
             Continue(persons, userName, actions);
             void Continue(List<Person> persons, string userName, Actions actions)
             {
-                Console.WriteLine("\nWould you like to add another family member? (Y/N)");
+                Console.WriteLine("\n\nWould you like to add another family member? (Y/N)");
                 string response = (Console.ReadLine() ?? string.Empty).Trim().ToLower();
 
                 if (response == "y")
@@ -150,7 +142,7 @@ namespace FamTrack
         
         public static void MainMenu(List<Person> persons, string userName, Actions actions)
         {
-            actions.SuccessResponse("\nWhat would you like to do next?");
+            actions.SuccessResponse("\nWhat would you like to do next?\n\n");
             Console.WriteLine("1. View all family members");
             Console.WriteLine("2. Add another family member");
             Console.WriteLine("3. Exit\n");

@@ -1,42 +1,34 @@
 using System;
+using Spectre.Console;
 
 public class Actions
 {
     //show error message
     public void ErrorResponse(String message)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine(message);
-        Console.ResetColor();
+       AnsiConsole.Markup($"[red3_1]{message}[/]");
     }
 
     //show success message
     public void SuccessResponse(String message)
     {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(message);
-        Console.ResetColor();
+        AnsiConsole.Markup($"[springgreen3_1]{message}[/]");
     }
     //show action message
     public void ActionResponse(String message)
     {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine(message);
-        Console.ResetColor();
+      AnsiConsole.Markup($"[yellow3_1]{message}[/]");
     }
-
-    public void ShowMessage(string message, ConsoleColor color)
+    
+    //user action prompt
+    public void ActionPrompt(String message)
     {
-        Console.ForegroundColor = color;
-        Console.WriteLine(message);
-        Console.ResetColor();
+        AnsiConsole.Markup($"[cyan]{message}\n[/]");
     }
 
     public void ShowHeading(String message)
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"~~~~~{message}~~~~~");
-        Console.ResetColor();
+        AnsiConsole.Markup($"[steelblue1_1]~~~~~{message}~~~~~[/]\n");
     }
 
     public void ShowFamilyMembers(List<Person> persons, Actions actions)
@@ -48,20 +40,21 @@ public class Actions
         }
         else
         {
-            
             actions.ShowHeading("RECORDED FAMILY MEMBER'S LIST");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nHere is the list:\n");
-            Console.ResetColor();
+            actions.SuccessResponse("\nHere is the list:\n");
+
+            //Add line - begining of list
+            actions.SuccessResponse(new string('.', 40) + "\n\n");
 
             for (int i = 0; i < persons.Count; i++)
             {
                 string gender = persons[i].Gender.ToLower() == "m" ? "Male" : "Female";
-
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"  {i + 1}. {persons[i].Name} -- {persons[i].Age} Years -- {gender}");
-                Console.ResetColor();
+                string memberLine = ($"  {i + 1}. {persons[i].Name} ({gender}) -- {persons[i].Age} Years");
+                actions.ActionPrompt(memberLine);
             }
+
+            //Add line - end of list
+            actions.SuccessResponse("\n" + new string('.', 40));
         }
     }
 }
