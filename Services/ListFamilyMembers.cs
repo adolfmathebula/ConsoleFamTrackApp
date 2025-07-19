@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using FamTrack.Models;
+using FamilyTracker.Models;
 
-namespace FamTrack.Services
+namespace FamilyTracker.Services
 {
 
     public class ListFamilyMembers

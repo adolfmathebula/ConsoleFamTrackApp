@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using FamTrack.Models;
-using FamTrack.Services;
+using FamilyTracker.Models;
+using FamilyTracker.Services;
 
-namespace FamTrack.Services
+namespace FamilyTracker.Services
 {
     public class FamilyRegister
     {

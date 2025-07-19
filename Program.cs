@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using FamTrack.Models;
-using FamTrack.Services;
+using FamilyTracker.Models;
+using FamilyTracker.Services;
 
 
-namespace FamTrack
+namespace FamilyTracker
 {
     class Program
     {

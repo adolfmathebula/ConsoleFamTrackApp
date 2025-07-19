@@ -1,4 +1,4 @@
-namespace FamTrack.Models
+namespace FamilyTracker.Models
 {
   public class Person(string name, int age, string gender)
   {

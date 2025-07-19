@@ -1,6 +1,6 @@
 using Spectre.Console;
 
-namespace FamTrack.Services
+namespace FamilyTracker.Services
 {
     public class ConsoleMessenger
     {
