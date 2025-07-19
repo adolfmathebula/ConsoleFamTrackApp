@@ -22,7 +22,7 @@ namespace FamilyTracker.Services.FamilyRegister
             else if (register == "n")
             {
                 Console.Clear();
-                messenger.Success($"Goodbye {userName}, thanks for visiting.\n\n");
+                MenuHandler.AfterAddingMembersMenu(persons, userName, messenger, listService);
             }
             else
             {

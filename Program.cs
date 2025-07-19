@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using FamilyTracker.Models;
+﻿
 using FamilyTracker.Services;
 using FamilyTracker.Services.FamilyRegister;
-
 
 namespace FamilyTracker
 {
@@ -16,7 +13,9 @@ namespace FamilyTracker
             // Initialize services
             var messenger = new ConsoleMessenger();
             var listService = new ListFamilyMembers(messenger);
-            var persons = new List<Person>();
+            var getFamilyMembers = new GetFamilyMembers();
+
+            var persons = getFamilyMembers.Load();
 
             messenger.Heading("Family Tracker");
             Console.WriteLine("\nHi, welcome to Family Tracker.");
@@ -36,10 +35,12 @@ namespace FamilyTracker
             } while (string.IsNullOrWhiteSpace(userName));
 
             Console.Clear();
-            Console.WriteLine($"Hi, {userName}, are you ready to record a family member? (Y/N)");
+            Console.WriteLine($"Hi, {userName}, here is trhe main menu");
 
-           FamilyRegistration.Start(persons, userName, messenger, listService);
+            // FamilyRegistration.Start(persons, userName, messenger, listService);
+            MenuHandler.AfterAddingMembersMenu(persons, userName, messenger, listService);
         }
+
     }
 }
 

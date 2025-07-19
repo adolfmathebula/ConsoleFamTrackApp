@@ -8,7 +8,7 @@ namespace FamilyTracker.Services.FamilyRegister
         {
             Console.Clear();
             messenger.Heading("Family Tracker");
-            Console.WriteLine($"\nHi {userName}, you have recorded {persons.Count} family {(persons.Count == 1 ? "member" : "members")}.");
+            Console.WriteLine($"\nHi {userName}, There are {persons.Count} family {(persons.Count == 1 ? "member" : "members")} recorded.");
             MainMenu(persons, userName, messenger, listService);
         }
 
@@ -16,7 +16,7 @@ namespace FamilyTracker.Services.FamilyRegister
         {
             messenger.Success("\nWhat would you like to do next?\n");
             Console.WriteLine("1. View all family members");
-            Console.WriteLine("2. Add another family member");
+            Console.WriteLine("2. Add a family member");
             Console.WriteLine("3. Exit\n");
 
             string choice = (Console.ReadLine() ?? string.Empty).Trim();
