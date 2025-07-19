@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FamilyTracker.Models;
 using FamilyTracker.Services;
+using FamilyTracker.Services.FamilyRegister;
 
 
 namespace FamilyTracker
@@ -17,11 +18,9 @@ namespace FamilyTracker
             var listService = new ListFamilyMembers(messenger);
             var persons = new List<Person>();
 
-            // Heading and greeting
             messenger.Heading("Family Tracker");
             Console.WriteLine("\nHi, welcome to Family Tracker.");
 
-            // Prompt for user name
             string userName;
             do
             {
@@ -39,8 +38,7 @@ namespace FamilyTracker
             Console.Clear();
             Console.WriteLine($"Hi, {userName}, are you ready to record a family member? (Y/N)");
 
-            // Register family members
-            FamilyRegister.AskToRegister(persons, userName, messenger, listService);
+           FamilyRegistration.Start(persons, userName, messenger, listService);
         }
     }
 }
