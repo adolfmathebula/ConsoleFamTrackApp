@@ -14,10 +14,14 @@ namespace FamilyTracker.Services.FamilyRegister
 
         public static void MainMenu(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
+
+            DeleteFamilyMember deleteFamilyMember = new DeleteFamilyMember();
+
             messenger.Success("\nWhat would you like to do next?\n");
             Console.WriteLine("1. View all family members");
             Console.WriteLine("2. Add a family member");
-            Console.WriteLine("3. Exit\n");
+            Console.WriteLine("3. Delete a family member");
+            Console.WriteLine("4. Exit\n");
 
             string choice = (Console.ReadLine() ?? string.Empty).Trim();
 
@@ -32,6 +36,9 @@ namespace FamilyTracker.Services.FamilyRegister
                     RegisterFlow.RegisterMember(persons, userName, messenger, listService);
                     break;
                 case "3":
+                    deleteFamilyMember.Delete(persons, userName, messenger, listService);
+                    break;
+                case "4":
                     Console.Clear();
                     messenger.Success($"\n\nGoodbye {userName}, thanks for visiting.\n\n");
                     break;

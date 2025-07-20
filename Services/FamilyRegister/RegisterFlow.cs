@@ -7,6 +7,8 @@ namespace FamilyTracker.Services.FamilyRegister
     {
         public static void RegisterMember(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
+            var addFamilyMember = new SaveFamilyMembers();
+
             Console.Clear();
             messenger.Heading("RECORD A FAMILY MEMBER");
 
@@ -16,7 +18,7 @@ namespace FamilyTracker.Services.FamilyRegister
             {
                 messenger.Prompt("Enter family member's name:");
                 memberName = Console.ReadLine() ?? string.Empty;
-                
+
                 if (string.IsNullOrWhiteSpace(memberName))
                     messenger.Error("Invalid input. Please enter a valid name.\n");
             } while (string.IsNullOrWhiteSpace(memberName));
@@ -41,13 +43,19 @@ namespace FamilyTracker.Services.FamilyRegister
                     messenger.Error("Invalid input. Please enter 'M' or 'F'.\n");
             } while (memberGender != "M" && memberGender != "F");
 
-            persons.Add(new Person(memberName, memberAge, memberGender));
+           // Get the next ID
+            int Id = persons.Count > 0 ? persons[^1].Id + 1 : 0;
+
+            var newFamilyMember = new Person(Id, memberName, memberAge, memberGender);
+            persons.Add(newFamilyMember);
+            addFamilyMember.Save(persons);
+
             Console.Clear();
             messenger.Heading("RECORD A FAMILY MEMBER");
             messenger.Success($"\nFamily member {memberName} has been added successfully!\n");
 
             listService.Show(persons);
-
+            
             AskToContinue(persons, userName, messenger, listService);
         }
 

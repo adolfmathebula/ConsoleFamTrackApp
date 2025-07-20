@@ -1,4 +1,14 @@
 [
-  { "Name": "Adolf Mathebula", "Age": 30, "Gender": "M" },
-  { "Name": "Cathy Smith", "Age": 25, "Gender": "F" }
+  {
+    "Id": 0,
+    "Name": "Adolf Mathebula",
+    "Age": 30,
+    "Gender": "M"
+  },
+  {
+    "Id": 1,
+    "Name": "Cathy Smith",
+    "Age": 25,
+    "Gender": "F"
+  }
 ]
