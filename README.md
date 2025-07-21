@@ -102,17 +102,17 @@ public void Success(string message) => AnsiConsole.Markup($"[springgreen3_1]{mes
 ### 🛠️ Steps
 
 ```bash
-git clone https://github.com/your-repo/FamilyTracker.git
-cd FamilyTracker
+git clone https://github.com/adolfmathebula/ConsoleFamTrackApp
+cd ConsoleFamTrackApp
 dotnet run
 ```
 
 ---
 
-## Screenshot (old)
+## Screenshot
 
 
-![preview](https://github.com/adolfmathebula/ConsoleFamTrackApp/blob/main/screenshot/famtrack1.gif?raw=true)
+![preview](https://github.com/adolfmathebula/ConsoleFamTrackApp/blob/main/screenshot/ConsoleFamTrackApp.gif?raw=true)
 
 
 ## License
