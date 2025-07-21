@@ -36,6 +36,7 @@ namespace FamilyTracker.Services.FamilyRegister
                     RegisterFlow.RegisterMember(persons, userName, messenger, listService);
                     break;
                 case "3":
+                    Console.Clear();
                     deleteFamilyMember.Delete(persons, userName, messenger, listService);
                     break;
                 case "4":

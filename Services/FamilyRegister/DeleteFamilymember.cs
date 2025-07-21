@@ -21,35 +21,37 @@ namespace FamilyTracker.Services.FamilyRegister
             {
                 Console.WriteLine($"{person.Id}: {person.Name}");
             }
-            messenger.Prompt($"01: Return to Main Menu\n");
+            messenger.Prompt($"99: Return to Main Menu\n");
 
             if (int.TryParse(Console.ReadLine(), out int userInput))
             {
-                if (userInput == 01)
+                if (userInput == 99)
                 {
                     FamilyRegister.MenuHandler.AfterAddingMembersMenu(persons, userName, messenger, listService);
                 }
-
-                var personToDelete = persons.Find(p => p.Id == userInput);
-                if (personToDelete != null)
-                {
-                    persons.Remove(personToDelete);
-                    SaveFamilyMembers.Save(persons);
-                    Console.Clear();
-                    messenger.Success($"\nSuccessfully deleted {personToDelete.Name}.\n\n");
-                    Delete(persons, userName, messenger, listService);
-                }
                 else
                 {
-                    Console.Clear();
-                    messenger.Error("No family member found with that ID\n\n");
-                    Delete(persons, userName, messenger, listService);
-                }
+                     var personToDelete = persons.Find(p => p.Id == userInput);
+                    if (personToDelete != null)
+                    {
+                        persons.Remove(personToDelete);
+                        SaveFamilyMembers.Save(persons);
+                        Console.Clear();
+                        messenger.Success($"\nSuccessfully deleted {personToDelete.Name}.\n\n");
+                        Delete(persons, userName, messenger, listService);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        messenger.Error("No family member found with that ID\n\n");
+                        Delete(persons, userName, messenger, listService);
+                    }
+                }  
             }
             else
             {
                 Console.Clear();
-                 messenger.Error("Invalid input. Please enter a valid ID.\n\n");
+                messenger.Error("Invalid input. Please enter a valid ID.\n\n");
                 Delete(persons, userName, messenger, listService);
             }
         }
