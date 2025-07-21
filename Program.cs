@@ -35,7 +35,7 @@ namespace FamilyTracker
             } while (string.IsNullOrWhiteSpace(userName));
 
             Console.Clear();
-            Console.WriteLine($"Hi, {userName}, here is trhe main menu");
+            Console.WriteLine($"Hi, {userName}, here is the main menu");
 
             // FamilyRegistration.Start(persons, userName, messenger, listService);
             MenuHandler.AfterAddingMembersMenu(persons, userName, messenger, listService);

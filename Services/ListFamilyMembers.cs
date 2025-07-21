@@ -14,7 +14,7 @@ namespace FamilyTracker.Services
             _messenger = messenger;
         }
 
-        public void Show(List<Person> persons)
+        public void Show(List<IPerson> persons)
         {
             if (persons.Count == 0)
             {

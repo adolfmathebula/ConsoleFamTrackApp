@@ -4,7 +4,7 @@ namespace FamilyTracker.Services.FamilyRegister
 {
     public static class MenuHandler
     {
-        public static void AfterAddingMembersMenu(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        public static void AfterAddingMembersMenu(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
             Console.Clear();
             messenger.Heading("Family Tracker");
@@ -12,7 +12,7 @@ namespace FamilyTracker.Services.FamilyRegister
             MainMenu(persons, userName, messenger, listService);
         }
 
-        public static void MainMenu(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        public static void MainMenu(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
 
             DeleteFamilyMember deleteFamilyMember = new DeleteFamilyMember();

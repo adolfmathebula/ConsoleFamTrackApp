@@ -6,7 +6,7 @@ namespace FamilyTracker.Services
     public class SaveFamilyMembers
     {
         private readonly string filePath = "./data/familyMembers.json";
-        public void Save(List<Person> persons)
+        public void Save(List<IPerson> persons)
         {
             try
             {

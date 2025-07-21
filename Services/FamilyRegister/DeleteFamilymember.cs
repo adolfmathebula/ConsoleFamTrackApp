@@ -4,9 +4,7 @@ namespace FamilyTracker.Services.FamilyRegister
 {
     public class DeleteFamilyMember
     {
-        private readonly string filePath = "./data/familyMembers.json";
-
-        public void Delete(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        public void Delete(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
             var SaveFamilyMembers = new SaveFamilyMembers();
            

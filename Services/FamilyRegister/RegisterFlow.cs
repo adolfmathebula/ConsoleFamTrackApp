@@ -5,7 +5,7 @@ namespace FamilyTracker.Services.FamilyRegister
 {
     public static class RegisterFlow
     {
-        public static void RegisterMember(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        public static void RegisterMember(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
             var addFamilyMember = new SaveFamilyMembers();
 
@@ -55,11 +55,11 @@ namespace FamilyTracker.Services.FamilyRegister
             messenger.Success($"\nFamily member {memberName} has been added successfully!\n");
 
             listService.Show(persons);
-            
+
             AskToContinue(persons, userName, messenger, listService);
         }
 
-        private static void AskToContinue(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        private static void AskToContinue(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
             Console.WriteLine("\nWould you like to add another family member? (Y/N)");
             string response = (Console.ReadLine() ?? string.Empty).Trim().ToLower();

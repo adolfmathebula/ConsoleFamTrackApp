@@ -5,7 +5,7 @@ namespace FamilyTracker.Services.FamilyRegister
 {
     public static class AskToRegister
     {
-        public static void Prompt(List<Person> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
+        public static void Prompt(List<IPerson> persons, string userName, ConsoleMessenger messenger, ListFamilyMembers listService)
         {
             Console.Clear();
             messenger.Heading("Family Tracker");
