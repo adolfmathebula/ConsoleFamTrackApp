@@ -23,14 +23,23 @@ namespace FamilyTracker.Services.FamilyRegister
                     messenger.Error("Invalid input. Please enter a valid name.\n");
             } while (string.IsNullOrWhiteSpace(memberName));
 
-            // get age
-            int memberAge;
+            // get date of birth
+            DateTime memberDateOfBirth;
             while (true)
             {
-                messenger.Prompt("Enter their age:");
-                string input = Console.ReadLine() ?? string.Empty;
-                if (int.TryParse(input, out memberAge)) break;
-                messenger.Error("Invalid input. Please enter a valid integer for age.\n");
+                messenger.Prompt("Enter their date of birth (yyyy-mm-dd):");
+                string dobInput = Console.ReadLine() ?? string.Empty;
+                if (DateTime.TryParse(dobInput, out memberDateOfBirth))
+                {
+                    if (memberDateOfBirth <= DateTime.Today)            
+                        break;
+                    else
+                        messenger.Error("Date of birth cannot be in the future. Please try again.\n");
+                }
+                else
+                {
+                    messenger.Error("Invalid date format. Please enter a valid date in the format yyyy-mm-dd.\n");
+                }
             }
 
             // get gender
@@ -46,7 +55,7 @@ namespace FamilyTracker.Services.FamilyRegister
            // Get the next ID
             int Id = persons.Count > 0 ? persons[^1].Id + 1 : 0;
 
-            var newFamilyMember = new Person(Id, memberName, memberAge, memberGender);
+            var newFamilyMember = new Person(Id, memberName, memberDateOfBirth, memberGender);
             persons.Add(newFamilyMember);
             addFamilyMember.Save(persons);
 

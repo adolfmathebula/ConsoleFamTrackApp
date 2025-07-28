@@ -15,13 +15,11 @@ namespace FamilyTracker.Services.FamilyRegister
             }
 
             messenger.Heading("DELETE A FAMILY MEMBER");
-            Console.WriteLine("Select a family member to delete by ID:\n");
+            Console.WriteLine("Enter the ID of the family member you want to delete:");
 
-            foreach (var person in persons)
-            {
-                Console.WriteLine($"{person.Id}: {person.Name}");
-            }
-            messenger.Prompt($"99: Return to Main Menu\n");
+            listService.Show(persons);
+
+            messenger.Prompt($"\n99: Return to Main Menu\n");
 
             if (int.TryParse(Console.ReadLine(), out int userInput))
             {

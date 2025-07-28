@@ -1,10 +1,12 @@
 namespace FamilyTracker.Models
 {
-  public class Person(int id, string name, int age, string gender) : IPerson
+  public class Person(int id, string name, DateTime dateOfBirth, string gender) : IPerson
   {
     public int Id { get; } = id;
     public string Name { get; } = name;
-    public int Age { get; } = age;
+
+    public DateTime DateOfBirth { get; } = dateOfBirth;
+
     public string Gender { get; } = gender;
   }
 

@@ -4,7 +4,7 @@ namespace FamilyTracker.Models
     {
         int Id { get; }
         string Name { get; }
-        int Age { get; }
+        DateTime DateOfBirth { get; }
         string Gender { get; }
     }
 }

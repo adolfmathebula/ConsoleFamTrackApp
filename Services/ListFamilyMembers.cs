@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FamilyTracker.Models;
+using Spectre.Console;
 
 namespace FamilyTracker.Services
 {
@@ -18,22 +19,33 @@ namespace FamilyTracker.Services
         {
             if (persons.Count == 0)
             {
-                Console.WriteLine("No family members registered yet.");
+                Console.WriteLine("No family members registered yet.\n");
                 return;
             }
 
-            _messenger.Success("\nHere is the list:\n");
-            _messenger.Success(new string('.', 40) + "\n\n");
+              //create table for list display
+            var table = new Table();
 
+            table.AddColumn("[bold]ID[/]");
+            table.AddColumn("[bold]Name[/]");
+            table.AddColumn("[bold]Gender[/]");
+            table.AddColumn("[bold]Age[/]");
+
+           // table.Title = new TableTitle("[green]Family Members List[/]");
+             _messenger.Success("\nFamily Members List\n");
+            table.Border(TableBorder.Rounded);
+            
             for (int i = 0; i < persons.Count; i++)
             {
                 var person = persons[i];
                 string gender = person.Gender.ToLower() == "m" ? "Male" : "Female";
-                string line = $"  {i + 1}. {person.Name} ({gender}) -- {person.Age} Years";
-                _messenger.Prompt(line);
+                string age = Formatter.GetFormattedAge(person.DateOfBirth);
+
+                table.AddRow($"{i}", person.Name, gender, age);
             }
 
-            _messenger.Success("\n" + new string('.', 40) + "\n");
+            AnsiConsole.Write(table);
         }
-    }
+    };
+
 }

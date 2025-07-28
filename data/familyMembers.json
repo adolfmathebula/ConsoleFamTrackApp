@@ -2,13 +2,13 @@
   {
     "Id": 0,
     "Name": "Adolf Mathebula",
-    "Age": 30,
+    "DateOfBirth": "2000-04-11T00:00:00",
     "Gender": "M"
   },
   {
     "Id": 1,
     "Name": "Cathy Smith",
-    "Age": 25,
+    "DateOfBirth": "2016-05-20T00:00:00",
     "Gender": "F"
-  }
+  } 
 ]
